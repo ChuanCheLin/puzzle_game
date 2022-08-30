@@ -80,7 +80,7 @@ if __name__ == '__main__':
     
     for i in range(size*size):
         #load puzzle pieces
-        current_image = pygame.image.load(os.path.join("temp", f"{i}.jpg")).convert()
+        current_image = pygame.image.load(os.path.join("temp", f"{i}.png")).convert_alpha()
         # initial position (random)
         image_x = randint (0, WIDTH - 200)
         image_y = randint (0, HEIGHT - 200)
