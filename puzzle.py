@@ -19,7 +19,7 @@ class Puzzle():
         self.num = num
         self.axis = axis
         self.is_move = False
-        self.lock = False
+        self.lock = False # lock == true => in the true position(true_pos)
         
         self.left = None
         self.right = None

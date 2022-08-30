@@ -27,19 +27,21 @@ def is_in_rectangle(pos, rect):
     rx, ry, rw, rh = rect
     if (rx <= x <= rx+rw) and (ry <= y <= ry+rh):
         return True
-    return False    
+    return False
 
 def draw_puzzle_frame():
     screen.fill(white)    
     pygame.draw.rect(screen, black, (start_x - 1, start_y - 1, puzzle_width, puzzle_height))
     pygame.draw.rect(screen, white, (start_x, start_y, puzzle_width -2 ,puzzle_height-2))
     pygame.draw.rect(screen, black, (2, 2, 40, 40))
+    
 # draw every puzzle pieces    
 def draw_puzzle_pieces():
     for i in range(len(puzzles)):
         current_puzzle = puzzles[len(puzzles)-i-1]
         screen.blit(current_puzzle.img, current_puzzle.pos)
-        
+
+# redraw the frame and puzzle pieces        
 def redraw_all():
     if current_puzzle.is_move:
         # redraw the frame
@@ -55,7 +57,7 @@ def redraw_all():
         current_puzzle.pos = [new_image_x, new_image_y]
         
         for j in current_puzzle.group:
-            if j == i :
+            if j == i or puzzles[j].lock == True:
                 continue
             else:
                 w = current_puzzle.axis[0] - puzzles[j].axis[0]
